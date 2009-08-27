@@ -19,7 +19,7 @@ module MetricFu
         file_path = match.shift.split('--').first
         file_path = file_path.gsub('"', ' ').strip
         code_smells = match.map do |smell|
-          match_object = smell.match(REEK_REGEX)
+          match_object = smell.strip.match(REEK_REGEX)
           next unless match_object
           {:method => match_object[1].strip,
            :message => match_object[2].strip,
