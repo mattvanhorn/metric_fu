@@ -14,7 +14,7 @@ module MetricFu
     end
 
     def analyze
-      @matches = @output.chomp.split("\n\n").map{|m| m.split("\n") }
+      @matches = @output.chomp.split(/^(?=\S)/).map{|m| m.split("\n") }
       @matches = @matches.map do |match|
         file_path = match.shift.split('--').first
         file_path = file_path.gsub('"', ' ').strip
